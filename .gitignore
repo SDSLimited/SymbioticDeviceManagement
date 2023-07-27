@@ -1,0 +1,8 @@
+# Logging directory and log files.
+logs/
+logs/archive/
+*.log
+*.tgz
+
+# Python cache.
+__pycache__
