@@ -121,7 +121,7 @@ if (targetAction == '1'):
         else:
             print('The target water depth you specified was not valid, please try again.')
 elif (targetAction == '10'):
-    applicationLogger.info('Target Value: {}.'.format(valueInput))
+    applicationLogger.info('Target Value: {}.'.format(targetValue))
 elif (targetAction == '20'):
 
     print('')
@@ -141,7 +141,7 @@ elif (targetAction == '20'):
             validInput = True
             break
 elif (targetAction == '21'):
-    applicationLogger.info('Target Value: {}.'.format(valueInput))
+    applicationLogger.info('Target Value: {}.'.format(targetValue))
 elif (targetAction == '22'):
 
     print('')
@@ -232,13 +232,11 @@ print('The device shadow update can be sent to one or more device in the given S
 print('be validated so ensure they are correct when you enter them.')
 print('')
 
-
-print('Please provide a list (comma seperated) of SYMBiotIC device IDs to issue the update to. Note these will NOT be')
 devicesInput = input('Please provide a list (comma seperated) of SYMBiotIC device IDs: ')
 targetDevices = devicesInput.split(",")
 targetDevices = [device.strip() for device in targetDevices]
 applicationLogger.info('Target Device Count: {} Devices.'.format(len(targetDevices)))
-applicationLogger.info('Target Devices: {}.'.format(len(targetDevices)))
+applicationLogger.info('Target Devices: {}.'.format(targetDevices))
 
 # -----
 
