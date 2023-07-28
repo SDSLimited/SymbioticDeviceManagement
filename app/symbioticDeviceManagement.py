@@ -172,7 +172,7 @@ applicationLogger.info('Target Units: {}.'.format(targetUnits))
 
 # ----- Validity Period
 
-targetValidFromTime = datetime.now().replace(minute=0, second=0, microsecond=0)
+targetValidFromTime = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
 validInput = False
 
 print('')

@@ -27,7 +27,7 @@ import tarfile
 import requests
 
 from random import uniform, randint
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
 # ----------------------------------------------------------------------------------------------------------------------
