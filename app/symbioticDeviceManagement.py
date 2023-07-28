@@ -256,7 +256,7 @@ if connectivity.waitForInternetConnection():
             shadowDoc, shadowDocOK = symbiotic.generateShadowJSONDocument(targetAction,
                                                                           targetValue,
                                                                           targetUnits,
-                                                                          targetValidFromTime,
+                                                                          targetValidFromTime - timedelta(hours=1),
                                                                           targetValidToTime,
                                                                           targetMethod,
                                                                           targetAdditional)
