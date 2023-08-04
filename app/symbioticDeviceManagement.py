@@ -138,7 +138,7 @@ elif (targetAction == '2'):
             validInput = True
             break
         else:
-            print('The target water depth you specified was not valid, please try again.')
+            print('The target release volume you specified was not valid, please try again.')
 elif (targetAction == '10'):
     applicationLogger.info('Target Value: {}.'.format(targetValue))
 elif (targetAction == '20'):
