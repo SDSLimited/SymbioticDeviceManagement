@@ -74,14 +74,15 @@ while True:
 
 print('')
 print('Current SYMBiotIC action types (Action Code - Action): ')
-print('1 - Actuate Valve or Other Actuator.')
+print('1 - Actuate Valve or Other Release Mechanism.')
+print('2 - Trigger Irrigation Event')
 print('10 - Terminate Existing Actions and Clear All Extant Device Shadow Updates.')
 print('20 - Configuration Update - Add/Amend "tankOnStand" Variable.')
 print('21 - Configuration Update - Add/Amend "temporaryOTAURL" variable.')
 print('22 - Configuration Update - Add/Amend "inlinePressureTransducer" variable.')
 print('')
 
-actions = ['1', '10', '20', '21', '22']
+actions = ['1', '2', '10', '20', '21', '22']
 targetAction = '1'
 validInput = False
 while True:
@@ -114,6 +115,24 @@ if (targetAction == '1'):
         valueInput = input('Please specify a target water depth for this actuation: ')
         valueInput = valueInput.strip()
         if (0.00 < float(valueInput) <= 2.00):
+            applicationLogger.info('Target Value: {}.'.format(valueInput))
+            targetValue = valueInput
+            validInput = True
+            break
+        else:
+            print('The target water depth you specified was not valid, please try again.')
+elif (targetAction == '2'):
+
+    print('')
+    print('Current irrigation events are controlled by a target release volume with the following limits: ')
+    print('Miniumum - 0.00 Litres')
+    print('Maximum - 1000.00 Litres')
+    print('')
+
+    while True:
+        valueInput = input('Please specify a target release volume for this irrigation event: ')
+        valueInput = valueInput.strip()
+        if (0.00 < float(valueInput) <= 1000.00):
             applicationLogger.info('Target Value: {}.'.format(valueInput))
             targetValue = valueInput
             validInput = True
@@ -166,6 +185,10 @@ elif (targetAction == '22'):
 # ----- Units
 
 targetUnits = 'M'
+
+if (targetAction == '2'):
+    targetUnits = 'L'
+
 applicationLogger.info('Target Units: {}.'.format(targetUnits))
 
 # -----
