@@ -39,7 +39,7 @@ appDir = pathlib.Path.cwd().parent
 
 # Linux
 #appDir = pathlib.Path.cwd()
-#appDir = appDir / 'symbioticDeviceManagement'
+#appDir = appDir / 'SymbioticDeviceManagement'
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Logging Configuration
