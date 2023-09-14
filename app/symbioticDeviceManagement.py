@@ -77,12 +77,10 @@ print('Current SYMBiotIC action types (Action Code - Action): ')
 print('1 - Actuate Valve or Other Release Mechanism.')
 print('2 - Trigger Irrigation Event')
 print('10 - Terminate Existing Actions and Clear All Extant Device Shadow Updates.')
-print('20 - Configuration Update - Add/Amend "tankOnStand" Variable.')
-print('21 - Configuration Update - Add/Amend "temporaryOTAURL" variable.')
-print('22 - Configuration Update - Add/Amend "inlinePressureTransducer" variable.')
+print('20 - Configuration Update')
 print('')
 
-actions = ['1', '2', '10', '20', '21', '22']
+actions = ['1', '2', '10', '20']
 targetAction = '1'
 validInput = False
 while True:
@@ -142,6 +140,7 @@ elif (targetAction == '2'):
 elif (targetAction == '10'):
     applicationLogger.info('Target Value: {}.'.format(targetValue))
 elif (targetAction == '20'):
+    applicationLogger.info('Target Value: {}.'.format(targetValue))
 
     print('')
     print('The "tankOnStand" configuration variable can be set with the following values: ')
@@ -230,8 +229,72 @@ applicationLogger.info('Target Method: {}.'.format(targetMethod))
 
 # ----- Additional
 
+keys = range(0, 30, 1)
 targetAdditional = 'None'
 validInput = False
+
+if (targetAction == '20'):
+
+    print('')
+    print('Configuration variables are defined in the embedded software configuration file (config.json) as key-value')
+    print('pairs. The values for these variables you enter are not validated by this program, so ensure they are')
+    print('when entered.')
+    print('')
+    print('Current SymbioticESP32 Configuration Variables: ')
+    print('0 - "id"')
+    print('1 - "apn"')
+    print('2 - "endpoint"')
+    print('3 - "OTAURL"')
+    print('4 - "softwareVersionChannel" - Default: "IEmSoVn"')
+    print('5 - "softwareMajorVersionChannel" - Default: "IEmSoVnMj"')
+    print('6 - "softwareMinorVersionChannel" - Default: "IEmSoVnMi"')
+    print('7 - "softwarePatchVersionChannel" - Default: "IEmSoVnPa"')
+    print('8 - "heapMemoryChannel" - Default: "IFrHpBy"')
+    print('9 - "programCounterChannel" - Default: "IMnPrCo"')
+    print('10 - "signalQualityChannel" - Default: "IMoSLDb"')
+    print('11 - "batteryVoltageChannel" - Default: "ISuVoVo"')
+    print('12 - "batteryCurrentChannel"  - Default: "ISuCumA"')
+    print('13 - "solarVoltageChannel" - Default: "OFF"')
+    print('14 - "solarCurrentChannel" - Default: "OFF"')
+    print('15 - "interiorTemperatureChannel" - Default: "IEnTmDC"')
+    print('16 - "interiorHumidityChannel" - Default: "IEnHmPc"')
+    print('17 - "actuationStateChannel" - Default: "EAcSt"')
+    print('18 - "subscriptionActuationStateChannel" - Default: "ESuAcSt"')
+    print('19 - "actionItemCountChannel" - Default: "IRACoCo"')
+    print('20 - "releaseTargetChannel" - Default: "EWaTaM"')
+    print('21 - "irrigationTargetChannel" - Default: "EIrTaL"')
+    print('22 - "irrigationSupplyChannel" - Default: "ERWTrL"')
+    print('23 - "onewireBChannel" - Default: "EArTmDC"')
+    print('24 - "pulseCountAChannel" - Default: "EFMFlL"')
+    print('25 - "pulseCountBChannel" - Default: "EFMAFIL"')
+    print('26 - "analogueSensorAChannel" - Default: "EWaDeMe"')
+    print('27 - "analogueSensorBChannel" - Default: "OFF"')
+    print('28 - "analogueSensorCChannel" - Default: "EVSVoVo"')
+    print('29 - "4to20mACalibrationMinimum" - Default: "0.00"')
+    print('30 - "4to20mACalibrationMaximum" - Default: "2.00"')
+    print('')
+
+while True:
+    configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to update (0-30): ')
+    configKeyInput = configKeyInput.strip()
+    if (configKeyInput not in keys):
+        print('The SYMBiotIC configuration variable key was not valid, please try again.')
+    else:
+        validInput = True
+        break
+
+print('')
+print('Please specify the value you wish to set SYMBiotIC configuration variable to. Note that "OFF" for a channel ')
+configValueInput = input('variable will stop that sensor/channel being sampled: ')
+
+configurationVariableKey = 'None'
+configurationVariableValue = configValueInput
+
+if (configKeyInput == '0'):
+    configurationVariableKey = 'id'
+
+
+
 
 if (targetAction == '21'):
 
