@@ -77,7 +77,7 @@ print('Current SYMBiotIC action types (Action Code - Action): ')
 print('1 - Actuate Valve or Other Release Mechanism.')
 print('2 - Trigger Irrigation Event')
 print('10 - Terminate Existing Actions and Clear All Extant Device Shadow Updates.')
-print('20 - Configuration Update')
+print('20 - Configuration Update - Add or Ammend Configuration Variables')
 print('')
 
 actions = ['1', '2', '10', '20']
@@ -142,42 +142,6 @@ elif (targetAction == '10'):
 elif (targetAction == '20'):
     applicationLogger.info('Target Value: {}.'.format(targetValue))
 
-    print('')
-    print('The "tankOnStand" configuration variable can be set with the following values: ')
-    print('Tank Not on Stand - 0.00')
-    print('Tank is on Stand - 1.00')
-    print('')
-
-    while True:
-        valueInput = input('Please specify the value you wish the "tankOnStand" variable to be set to: ')
-        valueInput = valueInput.strip()
-        if (valueInput not in values):
-            print('The value you specified was not valid, please try again.')
-        else:
-            applicationLogger.info('Target Value: {}.'.format(valueInput))
-            targetValue = valueInput
-            validInput = True
-            break
-elif (targetAction == '21'):
-    applicationLogger.info('Target Value: {}.'.format(targetValue))
-elif (targetAction == '22'):
-
-    print('')
-    print('The "inlinePressureTransducer" configuration variable can be set with the following values: ')
-    print('Inline Pressure Transducer Not Present - 0.00')
-    print('Inline Pressure Transducer Present - 1.00')
-    print('')
-
-    while True:
-        valueInput = input('Please specify the value you wish the "inlinePressureTransducer" variable to be set to: ')
-        valueInput = valueInput.strip()
-        if (valueInput not in values):
-            print('The value you specified was not valid, please try again.')
-        else:
-            applicationLogger.info('Target Value: {}.'.format(valueInput))
-            targetValue = valueInput
-            validInput = True
-            break
 
 # -----
 
@@ -229,85 +193,170 @@ applicationLogger.info('Target Method: {}.'.format(targetMethod))
 
 # ----- Additional
 
+options = ['0', '1']
 keys = range(0, 30, 1)
 targetAdditional = 'None'
+configurationVariableKey = 'None'
+configurationVariableValue = 'None'
 validInput = False
 
 if (targetAction == '20'):
 
     print('')
-    print('Configuration variables are defined in the embedded software configuration file (config.json) as key-value')
-    print('pairs. The values for these variables you enter are not validated by this program, so ensure they are')
-    print('when entered.')
-    print('')
-    print('Current SymbioticESP32 Configuration Variables: ')
-    print('0 - "id"')
-    print('1 - "apn"')
-    print('2 - "endpoint"')
-    print('3 - "OTAURL"')
-    print('4 - "softwareVersionChannel" - Default: "IEmSoVn"')
-    print('5 - "softwareMajorVersionChannel" - Default: "IEmSoVnMj"')
-    print('6 - "softwareMinorVersionChannel" - Default: "IEmSoVnMi"')
-    print('7 - "softwarePatchVersionChannel" - Default: "IEmSoVnPa"')
-    print('8 - "heapMemoryChannel" - Default: "IFrHpBy"')
-    print('9 - "programCounterChannel" - Default: "IMnPrCo"')
-    print('10 - "signalQualityChannel" - Default: "IMoSLDb"')
-    print('11 - "batteryVoltageChannel" - Default: "ISuVoVo"')
-    print('12 - "batteryCurrentChannel"  - Default: "ISuCumA"')
-    print('13 - "solarVoltageChannel" - Default: "OFF"')
-    print('14 - "solarCurrentChannel" - Default: "OFF"')
-    print('15 - "interiorTemperatureChannel" - Default: "IEnTmDC"')
-    print('16 - "interiorHumidityChannel" - Default: "IEnHmPc"')
-    print('17 - "actuationStateChannel" - Default: "EAcSt"')
-    print('18 - "subscriptionActuationStateChannel" - Default: "ESuAcSt"')
-    print('19 - "actionItemCountChannel" - Default: "IRACoCo"')
-    print('20 - "releaseTargetChannel" - Default: "EWaTaM"')
-    print('21 - "irrigationTargetChannel" - Default: "EIrTaL"')
-    print('22 - "irrigationSupplyChannel" - Default: "ERWTrL"')
-    print('23 - "onewireBChannel" - Default: "EArTmDC"')
-    print('24 - "pulseCountAChannel" - Default: "EFMFlL"')
-    print('25 - "pulseCountBChannel" - Default: "EFMAFIL"')
-    print('26 - "analogueSensorAChannel" - Default: "EWaDeMe"')
-    print('27 - "analogueSensorBChannel" - Default: "OFF"')
-    print('28 - "analogueSensorCChannel" - Default: "EVSVoVo"')
-    print('29 - "4to20mACalibrationMinimum" - Default: "0.00"')
-    print('30 - "4to20mACalibrationMaximum" - Default: "2.00"')
+    print('Current options for SYMBiotICESP32 configuration variable updates: ')
+    print('0 - Update/Ammend Existing Configuration variable')
+    print('1 - Add New Configuration variable')
     print('')
 
-while True:
-    configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to update (0-30): ')
-    configKeyInput = configKeyInput.strip()
-    if (configKeyInput not in keys):
-        print('The SYMBiotIC configuration variable key was not valid, please try again.')
-    else:
-        validInput = True
-        break
+    while True:
+        optionInput = input('Please the option you wish to use for configuration variable updates: ')
+        optionInput = optionInput.strip()
+        if (optionInput not in options):
+            print('The option selected was not valid, please try again.')
+        else:
+            validInput = True
+            break
 
-print('')
-print('Please specify the value you wish to set SYMBiotIC configuration variable to. Note that "OFF" for a channel ')
-configValueInput = input('variable will stop that sensor/channel being sampled: ')
+    if (optionInput == '0'):
 
-configurationVariableKey = 'None'
-configurationVariableValue = configValueInput
+        print('')
+        print('Configuration variables are defined in the embedded software configuration file (config.json) as key-value')
+        print('pairs. The values for these variables you enter are not validated by this program, so ensure they are')
+        print('when entered.')
+        print('')
+        print('Current SymbioticESP32 Configuration Variables: ')
+        print('0 - "id"')
+        print('1 - "apn"')
+        print('2 - "endpoint"')
+        print('3 - "OTAURL"')
+        print('4 - "softwareVersionChannel" - Default: "IEmSoVn"')
+        print('5 - "softwareMajorVersionChannel" - Default: "IEmSoVnMj"')
+        print('6 - "softwareMinorVersionChannel" - Default: "IEmSoVnMi"')
+        print('7 - "softwarePatchVersionChannel" - Default: "IEmSoVnPa"')
+        print('8 - "heapMemoryChannel" - Default: "IFrHpBy"')
+        print('9 - "programCounterChannel" - Default: "IMnPrCo"')
+        print('10 - "signalQualityChannel" - Default: "IMoSLDb"')
+        print('11 - "batteryVoltageChannel" - Default: "ISuVoVo"')
+        print('12 - "batteryCurrentChannel"  - Default: "ISuCumA"')
+        print('13 - "solarVoltageChannel" - Default: "OFF"')
+        print('14 - "solarCurrentChannel" - Default: "OFF"')
+        print('15 - "interiorTemperatureChannel" - Default: "IEnTmDC"')
+        print('16 - "interiorHumidityChannel" - Default: "IEnHmPc"')
+        print('17 - "actuationStateChannel" - Default: "EAcSt"')
+        print('18 - "subscriptionActuationStateChannel" - Default: "ESuAcSt"')
+        print('19 - "actionItemCountChannel" - Default: "IRACoCo"')
+        print('20 - "releaseTargetChannel" - Default: "EWaTaM"')
+        print('21 - "irrigationTargetChannel" - Default: "EIrTaL"')
+        print('22 - "irrigationSupplyChannel" - Default: "ERWTrL"')
+        print('23 - "onewireBChannel" - Default: "EArTmDC"')
+        print('24 - "pulseCountAChannel" - Default: "EFMFlL"')
+        print('25 - "pulseCountBChannel" - Default: "EFMAFIL"')
+        print('26 - "analogueSensorAChannel" - Default: "EWaDeMe"')
+        print('27 - "analogueSensorBChannel" - Default: "OFF"')
+        print('28 - "analogueSensorCChannel" - Default: "EVSVoVo"')
+        print('29 - "4to20mACalibrationMinimum" - Default: "0.00"')
+        print('30 - "4to20mACalibrationMaximum" - Default: "2.00"')
+        print('')
 
-if (configKeyInput == '0'):
-    configurationVariableKey = 'id'
+        while True:
+            configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to update (0-30): ')
+            configKeyInput = configKeyInput.strip()
+            if (int(configKeyInput) not in keys):
+                print('The SYMBiotIC configuration variable key was not valid, please try again.')
+            else:
+                validInput = True
+                break
 
+        print('')
+        print('Please specify the value you wish to set SYMBiotIC configuration variable to. Note that "OFF" for a ')
+        configValueInput = input('channel variable will stop that sensor/channel being sampled: ')
 
+        configurationVariableValue = configValueInput
 
+        if (configKeyInput == '0'):
+            configurationVariableKey = 'id'
+        elif (configKeyInput == '1'):
+            configurationVariableKey = 'apn')
+        elif (configKeyInput == '2'):
+            configurationVariableKey = 'endpoint')
+        elif (configKeyInput == '3'):
+            configurationVariableKey = 'OTAURL')
+        elif (configKeyInput == '4'):
+            configurationVariableKey = 'softwareVersionChannel')
+        elif (configKeyInput == '5'):
+            configurationVariableKey = 'softwareMajorVersionChannel')
+        elif (configKeyInput == '6'):
+            configurationVariableKey = 'softwareMinorVersionChannel')
+        elif (configKeyInput == '7'):
+            configurationVariableKey = 'softwarePatchVersionChannel')
+        elif (configKeyInput == '8'):
+            configurationVariableKey = 'heapMemoryChannel')
+        elif (configKeyInput == '9'):
+            configurationVariableKey = 'programCounterChannel')
+        elif (configKeyInput == '10'):
+            configurationVariableKey = 'signalQualityChannel')
+        elif (configKeyInput == '11'):
+            configurationVariableKey = 'batteryVoltageChannel')
+        elif (configKeyInput == '12'):
+            configurationVariableKey = 'batteryCurrentChannel')
+        elif (configKeyInput == '13'):
+            configurationVariableKey = 'solarVoltageChannel')
+        elif (configKeyInput == '14'):
+            configurationVariableKey = 'solarCurrentChannel')
+        elif (configKeyInput == '15'):
+            configurationVariableKey = 'interiorTemperatureChannel')
+        elif (configKeyInput == '16'):
+            configurationVariableKey = 'interiorHumidityChannel')
+        elif (configKeyInput == '17'):
+            configurationVariableKey = 'actuationStateChannel')
+        elif (configKeyInput == '18'):
+            configurationVariableKey = 'subscriptionActuationStateChannel')
+        elif (configKeyInput == '19'):
+            configurationVariableKey = 'actionItemCountChannel')
+        elif (configKeyInput == '20'):
+            configurationVariableKey = 'releaseTargetChannel')
+        elif (configKeyInput == '21'):
+            configurationVariableKey = 'irrigationTargetChannel')
+        elif (configKeyInput == '22'):
+            configurationVariableKey = 'irrigationSupplyChannel')
+        elif (configKeyInput == '23'):
+            configurationVariableKey = 'onewireBChannel')
+        elif (configKeyInput == '24'):
+            configurationVariableKey = 'pulseCountAChannel')
+        elif (configKeyInput == '25'):
+            configurationVariableKey = 'pulseCountBChannel')
+        elif (configKeyInput == '26'):
+            configurationVariableKey = 'analogueSensorAChannel')
+        elif (configKeyInput == '27'):
+            configurationVariableKey = 'analogueSensorBChannel')
+        elif (configKeyInput == '28'):
+            configurationVariableKey = 'analogueSensorCChannel')
+        elif (configKeyInput == '29'):
+            configurationVariableKey = '4to20mACalibrationMinimum')
+        elif (configKeyInput == '30'):
+            configurationVariableKey = '4to20mACalibrationMaximum')
 
-if (targetAction == '21'):
+    elif (optionInput == '1'):
 
-    print('')
-    print('The "temporaryOTAURL" variable can be used to trigger firmware updates via a specific URL. Note that this')
-    print('variable cannot be validated, so ensure it is correct when you enter it.')
-    print('')
+        print('')
+        print('Configuration variables are defined in the embedded software configuration file (config.json) as key-value')
+        print('pairs. To define a new configuration variable, you will need to specify a key and value. Obviously ')
+        print('these values cannot be validated so take care when entering them.')
+        print('')
 
-    additionalInput = input('Please specify a valid OTA Update manifest URL: ')
-    additionalInput = additionalInput.strip()
-    applicationLogger.info('Target Additional Information: {}.'.format(additionalInput))
-    targetAdditional = additionalInput
-    validInput = True
+        configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to create: ')
+        configKeyInput = configKeyInput.strip()
+
+        configValueInput = input('Please specify the SYMBiotIC configuration variable value you wish to create: ')
+        configValueInput = configValueInput.strip()
+
+        configurationVariableKey = configKeyInput
+        configurationVariableValue = configValueInput
+
+    targetAdditional = ('{},{}'.format(configurationVariableKey, configurationVariableValue))
+    applicationLogger.info('Target Additional {}.'.format(targetAdditional))
+else:
+    applicationLogger.info('Target Additional {}.'.format(targetAdditional))
 
 # -----
 
