@@ -256,6 +256,7 @@ if (targetAction == '20'):
         print('28 - "analogueSensorCChannel" - Default: "EVSVoVo"')
         print('29 - "4to20mACalibrationMinimum" - Default: "0.00"')
         print('30 - "4to20mACalibrationMaximum" - Default: "2.00"')
+        print('31 - "TemporaryOTAURL"')
         print('')
 
         while True:
@@ -335,6 +336,8 @@ if (targetAction == '20'):
             configurationVariableKey = '4to20mACalibrationMinimum'
         elif (configKeyInput == '30'):
             configurationVariableKey = '4to20mACalibrationMaximum'
+        elif (configKeyInput == '31'):
+            configurationVariableKey = 'TemporaryOTAURL'
 
     elif (optionInput == '1'):
 
