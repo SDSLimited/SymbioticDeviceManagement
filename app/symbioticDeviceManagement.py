@@ -205,7 +205,7 @@ if (targetAction == '20'):
     print('')
     print('Current options for SYMBiotICESP32 configuration variable updates: ')
     print('0 - Update/Ammend Existing Configuration variable')
-    print('1 - Add New Configuration variable')
+    print('1 - Add New Configuration Variable')
     print('')
 
     while True:
@@ -276,65 +276,65 @@ if (targetAction == '20'):
         if (configKeyInput == '0'):
             configurationVariableKey = 'id'
         elif (configKeyInput == '1'):
-            configurationVariableKey = 'apn')
+            configurationVariableKey = 'apn'
         elif (configKeyInput == '2'):
-            configurationVariableKey = 'endpoint')
+            configurationVariableKey = 'endpoint'
         elif (configKeyInput == '3'):
-            configurationVariableKey = 'OTAURL')
+            configurationVariableKey = 'OTAURL'
         elif (configKeyInput == '4'):
-            configurationVariableKey = 'softwareVersionChannel')
+            configurationVariableKey = 'softwareVersionChannel'
         elif (configKeyInput == '5'):
-            configurationVariableKey = 'softwareMajorVersionChannel')
+            configurationVariableKey = 'softwareMajorVersionChannel'
         elif (configKeyInput == '6'):
-            configurationVariableKey = 'softwareMinorVersionChannel')
+            configurationVariableKey = 'softwareMinorVersionChannel'
         elif (configKeyInput == '7'):
-            configurationVariableKey = 'softwarePatchVersionChannel')
+            configurationVariableKey = 'softwarePatchVersionChannel'
         elif (configKeyInput == '8'):
-            configurationVariableKey = 'heapMemoryChannel')
+            configurationVariableKey = 'heapMemoryChannel'
         elif (configKeyInput == '9'):
-            configurationVariableKey = 'programCounterChannel')
+            configurationVariableKey = 'programCounterChannel'
         elif (configKeyInput == '10'):
-            configurationVariableKey = 'signalQualityChannel')
+            configurationVariableKey = 'signalQualityChannel'
         elif (configKeyInput == '11'):
-            configurationVariableKey = 'batteryVoltageChannel')
+            configurationVariableKey = 'batteryVoltageChannel'
         elif (configKeyInput == '12'):
-            configurationVariableKey = 'batteryCurrentChannel')
+            configurationVariableKey = 'batteryCurrentChannel'
         elif (configKeyInput == '13'):
-            configurationVariableKey = 'solarVoltageChannel')
+            configurationVariableKey = 'solarVoltageChannel'
         elif (configKeyInput == '14'):
-            configurationVariableKey = 'solarCurrentChannel')
+            configurationVariableKey = 'solarCurrentChannel'
         elif (configKeyInput == '15'):
-            configurationVariableKey = 'interiorTemperatureChannel')
+            configurationVariableKey = 'interiorTemperatureChannel'
         elif (configKeyInput == '16'):
-            configurationVariableKey = 'interiorHumidityChannel')
+            configurationVariableKey = 'interiorHumidityChannel'
         elif (configKeyInput == '17'):
-            configurationVariableKey = 'actuationStateChannel')
+            configurationVariableKey = 'actuationStateChannel'
         elif (configKeyInput == '18'):
-            configurationVariableKey = 'subscriptionActuationStateChannel')
+            configurationVariableKey = 'subscriptionActuationStateChannel'
         elif (configKeyInput == '19'):
-            configurationVariableKey = 'actionItemCountChannel')
+            configurationVariableKey = 'actionItemCountChannel'
         elif (configKeyInput == '20'):
-            configurationVariableKey = 'releaseTargetChannel')
+            configurationVariableKey = 'releaseTargetChannel'
         elif (configKeyInput == '21'):
-            configurationVariableKey = 'irrigationTargetChannel')
+            configurationVariableKey = 'irrigationTargetChannel'
         elif (configKeyInput == '22'):
-            configurationVariableKey = 'irrigationSupplyChannel')
+            configurationVariableKey = 'irrigationSupplyChannel'
         elif (configKeyInput == '23'):
-            configurationVariableKey = 'onewireBChannel')
+            configurationVariableKey = 'onewireBChannel'
         elif (configKeyInput == '24'):
-            configurationVariableKey = 'pulseCountAChannel')
+            configurationVariableKey = 'pulseCountAChannel'
         elif (configKeyInput == '25'):
-            configurationVariableKey = 'pulseCountBChannel')
+            configurationVariableKey = 'pulseCountBChannel'
         elif (configKeyInput == '26'):
-            configurationVariableKey = 'analogueSensorAChannel')
+            configurationVariableKey = 'analogueSensorAChannel'
         elif (configKeyInput == '27'):
-            configurationVariableKey = 'analogueSensorBChannel')
+            configurationVariableKey = 'analogueSensorBChannel'
         elif (configKeyInput == '28'):
-            configurationVariableKey = 'analogueSensorCChannel')
+            configurationVariableKey = 'analogueSensorCChannel'
         elif (configKeyInput == '29'):
-            configurationVariableKey = '4to20mACalibrationMinimum')
+            configurationVariableKey = '4to20mACalibrationMinimum'
         elif (configKeyInput == '30'):
-            configurationVariableKey = '4to20mACalibrationMaximum')
+            configurationVariableKey = '4to20mACalibrationMaximum'
 
     elif (optionInput == '1'):
 
