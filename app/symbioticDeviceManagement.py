@@ -194,7 +194,7 @@ applicationLogger.info('Target Method: {}.'.format(targetMethod))
 # ----- Additional
 
 options = ['0', '1']
-keys = range(0, 30, 1)
+keys = range(0, 32, 1)
 targetAdditional = 'None'
 configurationVariableKey = 'None'
 configurationVariableValue = 'None'
@@ -260,7 +260,7 @@ if (targetAction == '20'):
         print('')
 
         while True:
-            configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to update (0-30): ')
+            configKeyInput = input('Please specify the SYMBiotIC configuration variable key you wish to update (0-31): ')
             configKeyInput = configKeyInput.strip()
             if (int(configKeyInput) not in keys):
                 print('The SYMBiotIC configuration variable key was not valid, please try again.')
