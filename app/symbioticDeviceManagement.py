@@ -96,26 +96,36 @@ while True:
 
 # -----
 
+# ----- Method
+
+targetMethod = '1'
+applicationLogger.info('Target Method: {}.'.format(targetMethod))
+
+# -----
+
 # ----- Value
 
-values = ['0.00', '1.00']
 targetValue = '1.00'
 validInput = False
 if (targetAction == '1'):
 
     print('')
     print('Current valve or actuator actions are controlled by a target water depth with the following limits: ')
-    print('Miniumum - 0.00 M')
+    print('Miniumum - -2.00 M')
     print('Maximum - 2.00 M')
+    print('NB: Negative values indicate a relative depth change. So -0.2 M will release to 0.2 M below the current ')
+    print('level. Positive values will release to an absolute target depth. So 0.3 M will drain the tank to 0.3 M.')
     print('')
 
     while True:
         valueInput = input('Please specify a target water depth for this actuation: ')
         valueInput = valueInput.strip()
-        if (0.00 < float(valueInput) <= 2.00):
+        if (-2.00 < float(valueInput) <= 2.00):
             applicationLogger.info('Target Value: {}.'.format(valueInput))
             targetValue = valueInput
             validInput = True
+            if (float(targetValue) < 0.00):
+                targetMethod = '2'
             break
         else:
             print('The target water depth you specified was not valid, please try again.')
@@ -181,13 +191,6 @@ while True:
 
 applicationLogger.info('Target Valid From Time: {}.'.format(targetValidFromTime))
 applicationLogger.info('Target Valid To Time: {}.'.format(targetValidToTime))
-
-# -----
-
-# ----- Method
-
-targetMethod = '1'
-applicationLogger.info('Target Method: {}.'.format(targetMethod))
 
 # -----
 
