@@ -41,6 +41,9 @@ appDir = pathlib.Path.cwd().parent
 #appDir = pathlib.Path.cwd()
 #appDir = appDir / 'SymbioticDeviceManagement'
 
+# AMI Linux - Amazon EC2
+#appDir = pathlib.Path('/home/ec2-user/symbioticDeviceManagement')
+
 # ----------------------------------------------------------------------------------------------------------------------
 # Logging Configuration
 # ----------------------------------------------------------------------------------------------------------------------
