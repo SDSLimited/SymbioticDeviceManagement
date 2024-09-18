@@ -126,6 +126,7 @@ if (targetAction == '1'):
             targetValue = valueInput
             validInput = True
             if (float(targetValue) < 0.00):
+                targetAction = '3'
                 targetMethod = '2'
             break
         else:
