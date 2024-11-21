@@ -38,11 +38,11 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 #appDir = pathlib.Path.cwd().parent
 
 # Linux
-appDir = pathlib.Path.cwd()
-appDir = appDir / 'SymbioticDeviceManagement'
+#appDir = pathlib.Path.cwd()
+#appDir = appDir / 'SymbioticDeviceManagement'
 
 # AMI Linux - Amazon EC2
-#appDir = pathlib.Path('/home/ec2-user/symbioticDeviceManagement')
+appDir = pathlib.Path('/home/ec2-user/symbioticDeviceManagement')
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Logging Configuration
